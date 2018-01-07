@@ -1,0 +1,31 @@
+{
+    "name": "homebridge-particle-relaymodule",
+    "version": "0.0.1",
+    "description": "Homebridge plugin allowing control of relays with a Particle Photon",
+    "main": "platform.js",
+    "dependencies": {
+        "colors": "*",
+        "particle-api-js": "*"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/connormason/homebridge-particle-relaymodule"
+    },
+    "keywords": [
+        "homebrige",
+        "particle",
+        "photon",
+        "homebridge-plugin"
+    ],
+    "engines": {
+        "node": ">=0.12.0",
+        "homebridge": ">=0.2.0"
+    },
+    "author": "Connor Mason",
+    "license": "MIT",
+    "homepage": "https://github.com/connormason/homebridge-particle-relaymodule"
+}
