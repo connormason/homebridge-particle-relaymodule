@@ -2,7 +2,7 @@
     "name": "homebridge-particle-relaymodule",
     "version": "0.0.1",
     "description": "Homebridge plugin allowing control of relays with a Particle Photon",
-    "main": "platform.js",
+    "main": "index.js",
     "dependencies": {
         "colors": "*",
         "particle-api-js": "*"
