@@ -15,11 +15,13 @@
             "devices": [
                 {
                     "name": "Test Light",
-                    "type": "LIGHT"
+                    "type": "LIGHT",
+                    "relayPin": "3"
                 },
                 {
                     "name": "Test Switch",
-                    "type": "SWITCH"
+                    "type": "SWITCH",
+                    "relayPin": "4"
                 }
             ]
         }

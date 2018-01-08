@@ -3,6 +3,8 @@ const Particle = require('particle-api-js');
 const loginInfo = require('./credentials.json');
 
 var particle = new Particle();
+var accessToken = "";
+
 particle.login({
     username: loginInfo.username,
     password: loginInfo.password,
@@ -61,7 +63,7 @@ function RelayModuleAccessory(log, accessory) {
     this.services = [];
 
     // Check for required keys in accessory
-    var required_accessory_keys = ['name', 'type'];
+    var required_accessory_keys = ['name', 'type', 'relayPin'];
     for (i = 0; i < required_accessory_keys.length; ++i) {
         if (!(required_accessory_keys[i] in accessory)) {
             this.log.warn('Accessory missing key ' + required_accessory_keys[i])
@@ -70,7 +72,7 @@ function RelayModuleAccessory(log, accessory) {
 
     this.name = accessory['name'];
     this.type = accessory['type'].toUpperCase();
-    this.log('Initializing accessory "' + this.name + '" of type "' + this.type + '"')
+    this.relayPin = accessory['relayPin'];
 
     this.informationService = new Service.AccessoryInformation();
     this.informationService
@@ -102,6 +104,35 @@ RelayModuleAccessory.prototype = {
 
     setState: function(value, callback) {
         this.log('Setting state of "' + this.name + '": ' + value)
+
+        if (value) {
+            particle.callFunction({
+                deviceId: loginInfo.deviceID,
+                name: 'turnOn',
+                argument: this.relayPin,
+                auth: accessToken,
+            }).then(
+                function(data) {
+                    console.log(green("Outlet " + this.relayPin + " successfully turned on: "), data);
+                }, function(err) {
+                    console.log(red("Error turning on outlet " + this.relayPin + ":"), err);
+                }
+            );
+        } else {
+            particle.callFunction({
+                deviceId: loginInfo.deviceID,
+                name: 'turnOff',
+                argument: this.relayPin,
+                auth: accessToken,
+            }).then(
+                function(data) {
+                    console.log(green("Outlet " + this.relayPin + " successfully turned on: "), data);
+                }, function(err) {
+                    console.log(red("Error turning on outlet " + this.relayPin + ":"), err);
+                }
+            );
+        }
+
         return callback();
     }
 };
