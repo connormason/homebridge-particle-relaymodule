@@ -14,14 +14,24 @@
             "name": "Garage Outlet Module",
             "devices": [
                 {
-                    "name": "Test Light",
+                    "name": "Desk Light",
                     "type": "LIGHT",
                     "relayPin": "3"
                 },
                 {
-                    "name": "Test Switch",
+                    "name": "Party Lights",
                     "type": "SWITCH",
                     "relayPin": "4"
+                },
+                {
+                    "name": "Floor Lamp",
+                    "type": "LIGHT",
+                    "relayPin": "5"
+                },
+                {
+                    "name": "Rope Light",
+                    "type": "SWITCH",
+                    "relayPin": "6"
                 }
             ]
         }
