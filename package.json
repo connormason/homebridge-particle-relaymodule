@@ -4,7 +4,6 @@
     "description": "Homebridge plugin allowing control of relays with a Particle Photon",
     "main": "index.js",
     "dependencies": {
-        "colors": "*",
         "particle-api-js": "*"
     },
     "devDependencies": {},

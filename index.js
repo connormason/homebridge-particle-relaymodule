@@ -1,4 +1,3 @@
-const colors = require('colors');
 const Particle = require('particle-api-js');
 const loginInfo = require('./credentials.json');
 
@@ -11,9 +10,9 @@ particle.login({
 }).then(
     function(data) {
         accessToken = data.body.access_token;
-        console.log('Particle logged in with token: '.green, data.body.access_token);
+        console.log('Particle logged in with token: ', data.body.access_token);
     }, function(err) {
-        console.log('Could not login to Particle: '.red, err);
+        console.log('Could not login to Particle: ', err);
     }
 );
 
@@ -111,28 +110,15 @@ RelayModuleAccessory.prototype = {
                 name: 'turnOn',
                 argument: this.relayPin,
                 auth: accessToken,
-            }).then(
-                function(data) {
-                    console.log(green("Outlet " + this.relayPin + " successfully turned on: "), data);
-                }, function(err) {
-                    console.log(red("Error turning on outlet " + this.relayPin + ":"), err);
-                }
-            );
+            });
         } else {
             particle.callFunction({
                 deviceId: loginInfo.deviceID,
                 name: 'turnOff',
                 argument: this.relayPin,
                 auth: accessToken,
-            }).then(
-                function(data) {
-                    console.log(green("Outlet " + this.relayPin + " successfully turned on: "), data);
-                }, function(err) {
-                    console.log(red("Error turning on outlet " + this.relayPin + ":"), err);
-                }
-            );
+            });
         }
-
         return callback();
     }
 };
