@@ -15,7 +15,7 @@ particle.login({
 
         // Flash firmware to device using access token from login
         particle.flashDevice({ 
-            deviceId: loginInfo.outletModule_deviceID, 
+            deviceId: loginInfo.deviceID, 
             files: { file1: 'firmware/particle_photon.ino' }, 
             auth: data.body.access_token 
         }).then(function(data) {
