@@ -84,6 +84,8 @@ function RelayModuleAccessory(log, accessory) {
         this.actionService = new Service.Lightbulb(this.name);
     } else if (this.type == 'SWITCH') {
         this.actionService = new Service.Switch(this.name);
+    } else if (this.type == 'GARAGE') {
+        this.actionService = new Service.GarageDoorOpener(this.name);
     }
     this.actionService.getCharacteristic(Characteristic.On)
             .on('get', this.getState.bind(this))
