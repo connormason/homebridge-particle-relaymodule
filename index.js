@@ -104,6 +104,7 @@ RelayModuleAccessory.prototype = {
     setState: function(value, callback) {
         this.log('Setting state of "' + this.name + '": ' + value)
 
+        this.currentState = value;
         if (value) {
             particle.callFunction({
                 deviceId: loginInfo.deviceID,
